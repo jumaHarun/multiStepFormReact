@@ -4,13 +4,9 @@ function App() {
     return (
         <>
             <div className="container">
-                <nav className="nav">
-                    <h3>Navigation</h3>
-                </nav>
+                <nav className="form-tracker bg-accent-900"></nav>
 
-                <main className="main">
-                    <h1>Form</h1>
-                </main>
+                <main className="main bg-accent-300"></main>
             </div>
         </>
     );
