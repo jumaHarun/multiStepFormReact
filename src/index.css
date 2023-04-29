@@ -8,12 +8,19 @@
 
 * {
     margin: 0;
+    padding: 0;
+    font: inherit;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
     list-style: none;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 html:focus-within {
@@ -27,16 +34,10 @@ a:not([class]) {
 
 /* Make images easier to work with */
 img,
-picture {
+picture,
+svg {
     max-width: 100%;
     display: block;
-}
-
-input,
-button,
-textarea,
-select {
-    font: inherit;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -57,6 +58,6 @@ select {
 
 /* Sets the body default */
 body {
-    min-height: 100vh;
+    line-height: 1.5;
     text-rendering: optimizeSpeed;
 }
