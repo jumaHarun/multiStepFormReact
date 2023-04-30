@@ -1,4 +1,5 @@
 import './App.css';
+import { MultiStepForm } from './components/form/MultiStepForm';
 
 function App() {
     return (
@@ -6,7 +7,9 @@ function App() {
             <div className="container">
                 <nav className="form-tracker bg-accent-900"></nav>
 
-                <main className="main bg-accent-300"></main>
+                <main className="main bg-accent-300">
+                    <MultiStepForm />
+                </main>
             </div>
         </>
     );
