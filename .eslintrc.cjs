@@ -48,6 +48,7 @@ module.exports = {
         'jest',
         'simple-import-sort',
         'unicorn',
+        'prettier'
     ],
     rules: {
         'no-use-before-define': 'off',
@@ -56,7 +57,7 @@ module.exports = {
         'react/jsx-filename-extension': [
             'warn',
             {
-                extensions: ['.tsx', '.js'],
+                extensions: ['.tsx', '.js', 'jsx'],
             },
         ],
         'import/extensions': [
