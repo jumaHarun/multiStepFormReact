@@ -9,7 +9,11 @@ type ProviderProps = {
 };
 
 export const FormProvider = ({ children }: ProviderProps) => {
-    const form = useForm();
+    const { formState } = useForm();
 
-    return <FormContext.Provider value={form}>{children}</FormContext.Provider>;
+    return (
+        <FormContext.Provider value={formState}>
+            {children}
+        </FormContext.Provider>
+    );
 };

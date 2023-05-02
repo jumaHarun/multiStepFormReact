@@ -55,9 +55,3 @@ svg {
         scroll-behavior: auto !important;
     }
 }
-
-/* Sets the body default */
-body {
-    line-height: 1.5;
-    text-rendering: optimizeSpeed;
-}

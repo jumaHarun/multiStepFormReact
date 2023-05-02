@@ -20,8 +20,6 @@ export const useForm = () => {
         });
     };
 
-    console.log(formState);
-
     return {
         formState,
         handleNextStep,
