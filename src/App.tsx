@@ -8,7 +8,7 @@ import { MultiStepForm } from './components/form/MultiStepForm';
 function App() {
     return (
         <FormProvider>
-            <div className="container grid form-wrapper">
+            <div className="container grid">
                 <nav className="form-tracker">
                     <FormTracker />
                 </nav>

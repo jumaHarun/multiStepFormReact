@@ -12,6 +12,8 @@ import { ButtonWrapper } from '../ui/ButtonWrapper';
 export const MultiStepForm = () => {
     const { state } = useContext(FormContext);
 
+    const todos = [2, 3, 4, 5];
+
     return (
         <div className="form-wrapper">
             {state.step === 1 ? (
@@ -25,7 +27,8 @@ export const MultiStepForm = () => {
             ) : (
                 <Success />
             )}
-            <ButtonWrapper />
+
+            {todos.includes(state.step) && <ButtonWrapper />}
         </div>
     );
 };

@@ -28,6 +28,8 @@ export const FormProvider = ({ children }: ProviderProps) => {
     };
 
     const handleInputChange = (field: keyof FormState, value: string) => {
+        console.log('Handle change');
+
         dispatch({ type: 'HANDLE_CHANGE', field, value });
     };
 
