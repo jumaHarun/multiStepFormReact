@@ -45,7 +45,7 @@
 
     --fs-body: var(--fs-400);
     --fs-primary-heading: var(--fs-500);
-    --fs-button: var(--fs-200);
+    --fs-button: var(--fs-400);
 }
 
 @media (min-width: 48em) {
@@ -147,6 +147,10 @@
     font-size: var(--fs-primary-heading);
 }
 
+.fs-button {
+    font-size: var(--fs-button);
+}
+
 .grid {
     display: grid;
 }
@@ -176,18 +180,21 @@ body {
     max-width: 375px;
     width: 95%;
     margin: 0 auto;
+    position: relative;
 }
 
 .form-tracker {
     min-height: 26vh;
     background-image: url('/images/bg-sidebar-mobile.svg');
     background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
 }
 
 .sidebar {
     justify-content: center;
     gap: 1em;
-    padding-top: 1em;
+    padding-top: 2em;
 }
 
 .step-no {
@@ -202,6 +209,32 @@ body {
     color: var(--clr-primary-400);
     background-color: var(--clr-accent-400);
     border-color: var(--clr-accent-400);
+}
+
+.main {
+    min-height: calc(74vh);
+}
+
+.button-wrapper {
+    padding: 1em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn {
+    background: none;
+}
+
+.next-btn {
+    padding: 0.5em 0.75em;
+    margin-left: auto;
 }
 
 @media (min-width: 48em) {

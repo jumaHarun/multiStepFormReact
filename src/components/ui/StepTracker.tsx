@@ -7,11 +7,11 @@ type Props = {
 };
 
 export const StepTracker = ({ stepItem }: Props) => {
-    const { step } = useContext(FormContext);
+    const { state } = useContext(FormContext);
     const [stepNumber, stepDesc] = stepItem;
 
     const className =
-        step === Number(stepNumber)
+        state.step === Number(stepNumber)
             ? 'step-no grid fw-bold active '
             : 'step-no grid fw-bold text-neutral-900';
 

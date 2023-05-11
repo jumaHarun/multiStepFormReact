@@ -2,38 +2,43 @@ export interface FormState {
     step: number;
     name: string;
     email: string;
-    tel: string;
-    billing: 'monthly' | 'yearly';
-    plan: 'Arcade' | 'Advanced' | 'Pro';
+    phoneNumber: string;
+    billingPlan: string;
+    plan: string;
     addOns: string[];
-};
-
-type FormAction =
-    | { type: 'NEXT_STEP' }
-    | { type: 'PREV_STEP' }
-    | { type: 'UPDATE_FIELD'; field: keyof FormState; value: string };
+}
 
 export const initialState: FormState = {
     step: 1,
     name: '',
     email: '',
-    tel: '',
-    billing: 'monthly',
-    plan: 'Arcade',
+    phoneNumber: '',
+    billingPlan: '',
+    plan: '',
     addOns: [],
 };
 
-export const formReducer = (
-    state = initialState,
-    action: FormAction
-): FormState => {
+type ACTIONTYPE =
+    | { type: 'HANDLE_NEXT' }
+    | { type: 'HANDLE_PREV' }
+    | { type: 'HANDLE_CHANGE'; field: keyof FormState; value: string }
+    | { type: 'HANDLE_CONFIRM' };
+
+export const formReducer = (state = initialState, action: ACTIONTYPE) => {
     switch (action.type) {
-        case 'UPDATE_FIELD':
-            return { ...state, [action.field]: action.value };
-        case 'NEXT_STEP':
+        case 'HANDLE_NEXT':
+            if (state.step >= 4) {
+                return { ...state };
+            }
             return { ...state, step: state.step + 1 };
-        case 'PREV_STEP':
+        case 'HANDLE_PREV':
             return { ...state, step: state.step - 1 };
+        case 'HANDLE_CHANGE':
+            console.log('Change');
+            return { ...state, [action.field]: action.value };
+        case 'HANDLE_CONFIRM':
+            console.log('Confirm');
+            break;
         default:
             throw new Error('Unknown action type');
     }
