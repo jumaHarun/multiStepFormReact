@@ -2,15 +2,14 @@ import { createContext, useReducer } from 'react';
 import { formReducer, initialState, FormState } from '@reducers/FormReducer';
 
 interface FormContext {
-    state: FormState;
-    handleNext?: () => void;
-    handlePrev?: () => void;
-    handleInputChange?: (field: keyof FormState, value: string) => void;
+    state: FormState | undefined;
+    handleNext: () => void;
+    handlePrev: () => void;
+    handleInputChange: (field: keyof FormState, value: string) => void;
+    handleConfirm: () => void;
 }
 
-export const FormContext = createContext<FormContext>({
-    state: initialState,
-});
+export const FormContext = createContext({} as FormContext);
 
 type ProviderProps = {
     children: React.ReactNode;

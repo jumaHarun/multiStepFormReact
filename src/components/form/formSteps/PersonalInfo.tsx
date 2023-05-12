@@ -7,7 +7,7 @@ export const PersonalInfo = () => {
     const { title, desc, inputs } = personalInfoData;
     const { email, name, phone } = inputs;
 
-    const { state, handleNext } = useContext(FormContext);
+    const { handleNext } = useContext(FormContext);
 
     return (
         <form className="step-wrapper bg-neutral-900">
@@ -53,7 +53,7 @@ export const PersonalInfo = () => {
                         className="btn next-btn bg-primary-400 text-neutral-900"
                         onClick={handleNext}
                     >
-                        {state.step === 4 ? 'Confirm' : 'Next Step'}
+                        Next Step
                     </button>
                 </li>
             </ul>

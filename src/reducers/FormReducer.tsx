@@ -9,7 +9,7 @@ export interface FormState {
 }
 
 export const initialState: FormState = {
-    step: 1,
+    step: 2,
     name: '',
     email: '',
     phoneNumber: '',

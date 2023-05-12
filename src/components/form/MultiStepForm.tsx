@@ -10,23 +10,23 @@ import { ButtonWrapper } from '@uicomponents/ButtonWrapper';
 export const MultiStepForm = () => {
     const { state } = useContext(FormContext);
 
-    const todos = [2, 3, 4, 5];
+    const todos = [3, 4, 5];
 
     return (
         <div className="form-wrapper">
-            {state.step === 1 ? (
+            {state?.step === 1 ? (
                 <PersonalInfo />
-            ) : state.step === 2 ? (
+            ) : state?.step === 2 ? (
                 <Plans />
-            ) : state.step === 3 ? (
+            ) : state?.step === 3 ? (
                 <AddOns />
-            ) : state.step === 4 ? (
+            ) : state?.step === 4 ? (
                 <Confirmation />
             ) : (
                 <Success />
             )}
 
-            {todos.includes(state.step) && <ButtonWrapper />}
+            {todos.includes(state!.step) && <ButtonWrapper />}
         </div>
     );
 };

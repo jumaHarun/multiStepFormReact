@@ -27,9 +27,9 @@
         "title": "Select your plan",
         "desc": "You have the option of monthly or yearly billing.",
         "inputs": [
-            ["Arcade", "9"],
-            ["Advanced", "12"],
-            ["Pro", "15"]
+            ["Arcade", 9],
+            ["Advanced", 12],
+            ["Pro", 15]
         ]
     },
     "addOnsData": {

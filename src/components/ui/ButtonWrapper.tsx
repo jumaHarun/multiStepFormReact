@@ -6,7 +6,7 @@ export const ButtonWrapper = () => {
 
     return (
         <div className="button-wrapper bg-neutral-900 fs-button flex">
-            {state.step > 1 && (
+            {state!.step > 1 && (
                 <button
                     className="btn back-btn text-primary-900"
                     onClick={handlePrev}
@@ -20,7 +20,7 @@ export const ButtonWrapper = () => {
                 className="btn next-btn bg-primary-400 text-neutral-900"
                 onClick={handleNext}
             >
-                {state.step === 4 ? 'Confirm' : 'Next Step'}
+                {state!.step === 4 ? 'Confirm' : 'Next Step'}
             </button>
         </div>
     );
