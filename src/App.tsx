@@ -1,9 +1,7 @@
-import './App.css';
-
-import { FormProvider } from './context/FormContext';
-
-import { FormTracker } from './components/form/FormTracker';
-import { MultiStepForm } from './components/form/MultiStepForm';
+import '@/App.css';
+import { FormProvider } from '@context/FormContext';
+import { FormTracker } from '@formcomponents/FormTracker';
+import { MultiStepForm } from '@formcomponents/MultiStepForm';
 
 function App() {
     return (

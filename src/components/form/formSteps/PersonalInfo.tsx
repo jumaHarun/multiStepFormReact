@@ -1,9 +1,7 @@
 import { useContext } from 'react';
-import { personalInfoData } from '../../../formInfo.json';
-
-import { StepHeader } from '../../ui/StepHeader';
-
-import { FormContext } from '../../../context/FormContext';
+import { personalInfoData } from '@/formInfo.json';
+import { FormContext } from '@context/FormContext';
+import { StepHeader } from '@uicomponents/StepHeader';
 
 export const PersonalInfo = () => {
     const { title, desc, inputs } = personalInfoData;
@@ -62,7 +60,3 @@ export const PersonalInfo = () => {
         </form>
     );
 };
-
-/**
- *
- */

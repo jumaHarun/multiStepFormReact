@@ -1,5 +1,5 @@
 import { createContext, useReducer } from 'react';
-import { formReducer, initialState, FormState } from '../reducers/FormReducer';
+import { formReducer, initialState, FormState } from '@reducers/FormReducer';
 
 interface FormContext {
     state: FormState;

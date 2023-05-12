@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FormContext } from '../../context/FormContext';
+import { FormContext } from '@context/FormContext';
 
 export const ButtonWrapper = () => {
     const { state, handleNext, handlePrev } = useContext(FormContext);

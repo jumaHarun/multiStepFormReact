@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-
-import { FormContext } from '../../context/FormContext';
+import { FormContext } from '@context/FormContext';
 
 type Props = {
     stepItem: string[];

@@ -1,5 +1,5 @@
-import { sideBar } from '../../formInfo.json';
-import { StepTracker } from '../ui/StepTracker';
+import { sideBar } from '@/formInfo.json';
+import { StepTracker } from '@uicomponents/StepTracker';
 
 export const FormTracker = () => {
     return (
