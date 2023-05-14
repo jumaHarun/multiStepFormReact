@@ -12,7 +12,7 @@ export const Plans = () => {
     const { handleNext, handlePrev } = useContext(FormContext);
 
     return (
-        <div className="step-wrapper bg-neutral-900">
+        <form className="step-wrapper bg-neutral-900">
             <StepHeader key={title} title={title} desc={desc} />
 
             <ul role="list" className="plans-list ">
@@ -27,7 +27,12 @@ export const Plans = () => {
                                 ${arcade[1]}/mo
                             </span>
                         </p>
-                        <input type="checkbox" name="arcade" id="arcade" />
+                        <input
+                            type="checkbox"
+                            className="plans-input"
+                            name="arcade"
+                            id="arcade"
+                        />
                     </label>
                 </li>
                 <li className="plans-list-item">
@@ -44,7 +49,12 @@ export const Plans = () => {
                                 ${advanced[1]}/mo
                             </span>
                         </p>
-                        <input type="checkbox" name="advanced" id="advanced" />
+                        <input
+                            type="checkbox"
+                            className="plans-input"
+                            name="advanced"
+                            id="advanced"
+                        />
                     </label>
                 </li>
                 <li className="plans-list-item">
@@ -58,7 +68,12 @@ export const Plans = () => {
                                 ${pro[1]}/mo
                             </span>
                         </p>
-                        <input type="checkbox" name="" id="" />
+                        <input
+                            type="checkbox"
+                            className="plans-input"
+                            name="pro"
+                            id="pro"
+                        />
                     </label>
                 </li>
 
@@ -86,6 +101,6 @@ export const Plans = () => {
                     </button>
                 </li>
             </ul>
-        </div>
+        </form>
     );
 };

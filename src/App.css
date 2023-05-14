@@ -249,7 +249,7 @@ body {
     margin-bottom: 0.5em;
 }
 
-.step-wrapper p {
+.step-wrapper > p {
     max-width: 30ch;
 }
 
@@ -258,16 +258,16 @@ body {
     line-height: 1.5;
 }
 
-.step-wrapper input {
+input.plans-input {
+    display: none;
+}
+
+.step-wrapper input:is([type='text'], [type='email'], [type='tel']) {
     text-indent: 5px;
     width: 100%;
     padding: 0.5em;
     border: 1px solid var(--clr-primary-900);
     border-radius: var(--border-radius);
-}
-
-.step-wrapper input[type='checkbox'] {
-    display: none;
 }
 
 .step-wrapper input::placeholder {
@@ -278,19 +278,26 @@ body {
     outline: 1px solid var(--clr-accent-500);
 }
 
-.plans-list-item {
+.plans-list-item,
+.addon-list-item {
     border: 1px solid var(--clr-neutral-100);
     border-radius: var(--border-radius);
     padding: 1em;
 }
 
-.plans-list-item label {
+.plans-list-item label,
+.addon-list-item label {
     cursor: pointer;
     gap: 1em;
 }
 
-.plans-list-item span {
+.plans-list-item span,
+.addon-list-item span {
     display: block;
+}
+
+.addon-list-item p:last-child {
+    margin-left: auto;
 }
 
 /* Toggle switch */

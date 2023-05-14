@@ -1,16 +1,13 @@
 import { useContext } from 'react';
 import { FormContext } from '@context/FormContext';
-import { AddOns } from '@formSteps/AddOns';
-import { Confirmation } from '@formSteps/Confirmation';
 import { PersonalInfo } from '@formSteps/PersonalInfo';
 import { Plans } from '@formSteps/Plans';
+import { AddOns } from '@formSteps/AddOns';
+import { Confirmation } from '@formSteps/Confirmation';
 import { Success } from '@formSteps/Success';
-import { ButtonWrapper } from '@uicomponents/ButtonWrapper';
 
 export const MultiStepForm = () => {
     const { state } = useContext(FormContext);
-
-    const todos = [3, 4, 5];
 
     return (
         <div className="form-wrapper">
@@ -25,8 +22,6 @@ export const MultiStepForm = () => {
             ) : (
                 <Success />
             )}
-
-            {todos.includes(state!.step) && <ButtonWrapper />}
         </div>
     );
 };
