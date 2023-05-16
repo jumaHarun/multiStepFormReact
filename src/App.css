@@ -212,6 +212,10 @@ body {
     border-color: var(--clr-accent-400);
 }
 
+.hover-state:hover {
+    border: 1px solid var(--clr-accent-500);
+}
+
 .main {
     min-height: 74vh;
     position: relative;
@@ -221,6 +225,8 @@ body {
     padding: 1em;
     position: absolute;
     inset: 82% 0 0;
+
+    align-items: center;
 }
 
 .btn {
@@ -233,8 +239,13 @@ body {
     background: none;
 }
 
+.back-btn:is(:hover, :active) {
+    color: var(--clr-primary-400);
+    font-family: var(--fw-semi-bold);
+}
+
 .next-btn {
-    padding: 0.5em 0.75em;
+    padding: 0.5em 1em;
     margin-left: auto;
 }
 
@@ -258,11 +269,7 @@ body {
     line-height: 1.5;
 }
 
-input.plans-input {
-    display: none;
-}
-
-.step-wrapper input:is([type='text'], [type='email'], [type='tel']) {
+.personal-info-list-item input {
     text-indent: 5px;
     width: 100%;
     padding: 0.5em;
@@ -270,11 +277,21 @@ input.plans-input {
     border-radius: var(--border-radius);
 }
 
-.step-wrapper input::placeholder {
+.personal-info-list-item input::placeholder {
     color: var(--clr-primary-900);
 }
 
-.step-wrapper input:is(:focus-visible, :active) {
+.personal-info-list-item input:is(:focus-visible, :active) {
+    outline: 1px solid var(--clr-accent-500);
+}
+
+input.plans-input {
+    display: none;
+}
+
+.active-plan,
+.active-addon {
+    background-color: var(--clr-accent-100);
     outline: 1px solid var(--clr-accent-500);
 }
 
@@ -298,6 +315,14 @@ input.plans-input {
 
 .addon-list-item p:last-child {
     margin-left: auto;
+}
+
+.error-text {
+    float: right;
+}
+
+.error {
+    outline: 1px solid var(--clr-accent-900);
 }
 
 /* Toggle switch */
@@ -366,7 +391,7 @@ input.plans-input {
         width: 95%;
         background-color: var(--clr-neutral-900);
 
-        grid-template-columns: 2fr 5fr;
+        grid-template: 34em / 2fr 5fr;
         gap: 2em;
     }
 
@@ -412,13 +437,29 @@ input.plans-input {
         margin: 0;
     }
 
-    .step-wrapper li:last-child {
-        margin-top: 7em;
-    }
-
     .button-wrapper {
         position: unset;
         padding: 0;
+    }
+
+    .step-wrapper ul > li:last-child {
+        margin-top: 7em;
+    }
+
+    .plan-grid {
+        grid-template: 10em / repeat(3, 1fr);
+        gap: 1em;
+    }
+
+    .plans-list-item label {
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        gap: 1.6em;
+    }
+
+    .toggle-wrapper {
+        margin-top: 2.4em;
     }
 }
 

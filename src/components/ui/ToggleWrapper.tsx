@@ -1,14 +1,18 @@
-type Props = {
-    isChecked: boolean;
-    setIsChecked: (isChecked: boolean) => void;
-};
+import { useContext } from 'react';
+import { FormContext } from '@/context/FormContext';
 
-export const ToggleWrapper = ({ isChecked, setIsChecked }: Props) => {
+export const ToggleWrapper = () => {
+    const { billing, setBilling } = useContext(FormContext);
+
+    const handleToggle = () => {
+        return billing === 'mo' ? setBilling('yr') : setBilling('mo');
+    };
+
     return (
         <div className="toggle-wrapper flex bg-neutral-400">
             <p
                 className={`${
-                    isChecked ? 'text-primary-900' : 'text-primary-400'
+                    billing === 'mo' ? 'text-primary-900' : 'text-primary-400'
                 } fw-semi-bold`}
             >
                 Monthly
@@ -18,15 +22,15 @@ export const ToggleWrapper = ({ isChecked, setIsChecked }: Props) => {
                 <input
                     type="checkbox"
                     className="toggle"
-                    checked={isChecked}
-                    onChange={() => setIsChecked(!isChecked)}
+                    checked={billing === 'yr'}
+                    onChange={handleToggle}
                 />
                 <span className="slider bg-primary-400"></span>
             </label>
 
             <p
                 className={`${
-                    isChecked ? 'text-primary-400' : 'text-primary-900'
+                    billing === 'yr' ? 'text-primary-400' : 'text-primary-900'
                 } fw-semi-bold`}
             >
                 Yearly

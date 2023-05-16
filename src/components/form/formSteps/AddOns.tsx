@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useFormik } from 'formik';
 import { FormContext } from '@/context/FormContext';
 import { StepHeader } from '@/components/ui/StepHeader';
 import { addOnsData } from '@/formInfo.json';
@@ -9,18 +10,38 @@ export const AddOns = () => {
 
     const { handleNext, handlePrev } = useContext(FormContext);
 
+    const formik = useFormik({
+        initialValues: {
+            addOns: [] as string[],
+        },
+        onSubmit: (values) => {
+            console.log(values);
+            handleNext(values.addOns);
+        },
+    });
+
     return (
-        <form className="step-wrapper bg-neutral-900">
+        <form
+            onSubmit={formik.handleSubmit}
+            className="step-wrapper bg-neutral-900"
+        >
             <StepHeader key={title} title={title} desc={desc} />
 
             <ul role="list">
-                <li className="addon-list-item">
+                <li
+                    className={
+                        formik.values.addOns.includes('online-service')
+                            ? 'addon-list-item active-addon'
+                            : 'addon-list-item'
+                    }
+                >
                     <label className="flex">
                         <input
                             type="checkbox"
                             name="online-service"
                             id="online-service"
                             className="addons-input"
+                            onChange={formik.handleChange}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
@@ -44,6 +65,7 @@ export const AddOns = () => {
                             name="larger-storage"
                             id="larger-storage"
                             className="addons-input"
+                            onChange={formik.handleChange}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
@@ -67,6 +89,7 @@ export const AddOns = () => {
                             name="custom-profile"
                             id="custom-profile"
                             className="addons-input"
+                            onChange={formik.handleChange}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
