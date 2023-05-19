@@ -1,4 +1,4 @@
-import { StepOneInputs } from '@/types';
+import { personalInfoObj } from '@/types';
 import { useContext } from 'react';
 import { useFormik } from 'formik';
 
@@ -12,8 +12,8 @@ export const PersonalInfo = () => {
 
     const { handleNext } = useContext(FormContext);
 
-    const validate = (values: StepOneInputs) => {
-        const errors = {} as StepOneInputs;
+    const validate = (values: personalInfoObj) => {
+        const errors = {} as personalInfoObj;
 
         if (!values.name) {
             errors.name = 'This field is required';
@@ -149,7 +149,6 @@ export const PersonalInfo = () => {
                     <button
                         type="submit"
                         className="btn next-btn bg-primary-400 text-neutral-900"
-                        // onClick={handleNext}
                     >
                         Next Step
                     </button>

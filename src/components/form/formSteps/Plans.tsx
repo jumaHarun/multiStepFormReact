@@ -6,14 +6,14 @@ import { plansData } from '@/formInfo.json';
 import { ToggleWrapper } from '@uicomponents/ToggleWrapper';
 
 export const Plans = () => {
-    const { title, desc, inputs } = plansData;
-    const [arcade, advanced, pro] = inputs;
+    const { title, desc, monthsOff, plans } = plansData;
+    const [arcade, advanced, pro] = plans;
 
-    const { handleNext, handlePrev } = useContext(FormContext);
+    const { handleNext, handlePrev, billing,plan } = useContext(FormContext);
 
     const formik = useFormik({
         initialValues: {
-            plan: 'arcade',
+            plan: plan,
         },
         onSubmit: (values) => {
             handleNext(values.plan);
@@ -35,15 +35,28 @@ export const Plans = () => {
                                 ? 'plans-list-item hover-state active-plan'
                                 : 'plans-list-item hover-state'
                         }
+                        tabIndex={1}
                     >
                         <label className="flex">
-                            <img src="/images/icon-arcade.svg" alt="Arcade icon" />
+                            <img
+                                src="/images/icon-arcade.svg"
+                                alt="Arcade icon"
+                            />
                             <p>
                                 <span className="text-primary-400 fw-semi-bold">
-                                    {arcade[0]}
+                                    {arcade.name}
                                 </span>
                                 <span className="text-primary-900 fs-300">
-                                    ${arcade[1]}/mo
+                                    {billing === 'mo' ? (
+                                        `$${arcade.price.monthly}/mo`
+                                    ) : (
+                                        <>
+                                            ${arcade.price.yearly}/yr
+                                            <span className="text-primary-400 fs-200 fw-semi-bold">
+                                                {monthsOff} months free
+                                            </span>
+                                        </>
+                                    )}
                                 </span>
                             </p>
                             <input
@@ -62,6 +75,7 @@ export const Plans = () => {
                                 ? 'plans-list-item hover-state active-plan'
                                 : 'plans-list-item hover-state'
                         }
+                        tabIndex={2}
                     >
                         <label className="flex">
                             <img
@@ -70,10 +84,19 @@ export const Plans = () => {
                             />
                             <p>
                                 <span className="text-primary-400 fw-semi-bold">
-                                    {advanced[0]}
+                                    {advanced.name}
                                 </span>
                                 <span className="text-primary-900 fs-300">
-                                    ${advanced[1]}/mo
+                                    {billing === 'mo' ? (
+                                        `$${advanced.price.monthly}/mo`
+                                    ) : (
+                                        <>
+                                            ${advanced.price.yearly}/yr
+                                            <span className="text-primary-400 fs-200 fw-semi-bold">
+                                                {monthsOff} months free
+                                            </span>
+                                        </>
+                                    )}
                                 </span>
                             </p>
                             <input
@@ -92,15 +115,25 @@ export const Plans = () => {
                                 ? 'plans-list-item hover-state active-plan'
                                 : 'plans-list-item hover-state'
                         }
+                        tabIndex={3}
                     >
                         <label className="flex">
                             <img src="/images/icon-pro.svg" alt="Pro icon" />
                             <p>
                                 <span className="text-primary-400 fw-semi-bold">
-                                    {pro[0]}
+                                    {pro.name}
                                 </span>
                                 <span className="text-primary-900 fs-300">
-                                    ${pro[1]}/mo
+                                    {billing === 'mo' ? (
+                                        `$${pro.price.monthly}/mo`
+                                    ) : (
+                                        <>
+                                            ${pro.price.yearly}/yr
+                                            <span className="text-primary-400 fs-200 fw-semi-bold">
+                                                {monthsOff} months free
+                                            </span>
+                                        </>
+                                    )}
                                 </span>
                             </p>
                             <input
@@ -115,7 +148,7 @@ export const Plans = () => {
                     </li>
                 </div>
 
-                <li>
+                <li tabIndex={4}>
                     <ToggleWrapper />
                 </li>
 
