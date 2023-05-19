@@ -12,7 +12,7 @@ export const ToggleWrapper = () => {
         <div className="toggle-wrapper flex bg-neutral-400">
             <p
                 className={`${
-                    billing === 'mo' ? 'text-primary-900' : 'text-primary-400'
+                    billing === 'mo' ? 'text-primary-400' : 'text-primary-900'
                 } fw-semi-bold`}
             >
                 Monthly
