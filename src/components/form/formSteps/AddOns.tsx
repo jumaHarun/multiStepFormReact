@@ -8,15 +8,14 @@ export const AddOns = () => {
     const { title, desc, inputs } = addOnsData;
     const [onlineService, largerStorage, customProfile] = inputs;
 
-    const { handleNext, handlePrev } = useContext(FormContext);
+    const { handleNext, handlePrev, billing, addOns } = useContext(FormContext);
 
     const formik = useFormik({
         initialValues: {
-            addOns: [] as string[],
+            addon: addOns,
         },
         onSubmit: (values) => {
-            console.log(values);
-            handleNext(values.addOns);
+            handleNext(values.addon);
         },
     });
 
@@ -30,7 +29,7 @@ export const AddOns = () => {
             <ul role="list">
                 <li
                     className={
-                        formik.values.addOns.includes('online-service')
+                        formik.values.addon.includes('online-service')
                             ? 'addon-list-item active-addon'
                             : 'addon-list-item'
                     }
@@ -38,10 +37,13 @@ export const AddOns = () => {
                     <label className="flex">
                         <input
                             type="checkbox"
-                            name="online-service"
-                            id="online-service"
+                            name="addon"
                             className="addons-input"
+                            value="online-service"
                             onChange={formik.handleChange}
+                            checked={formik.values.addon.includes(
+                                'online-service'
+                            )}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
@@ -53,19 +55,30 @@ export const AddOns = () => {
                         </p>
 
                         <p className="text-accent-500">
-                            +${onlineService.price}/mo
+                            {billing === 'mo'
+                                ? `$${onlineService.price.monthly}/mo`
+                                : `$${onlineService.price.yearly}/yr`}
                         </p>
                     </label>
                 </li>
 
-                <li className="addon-list-item">
+                <li
+                    className={
+                        formik.values.addon.includes('larger-storage')
+                            ? 'addon-list-item active-addon'
+                            : 'addon-list-item'
+                    }
+                >
                     <label className="flex">
                         <input
                             type="checkbox"
-                            name="larger-storage"
-                            id="larger-storage"
+                            name="addon"
+                            value="larger-storage"
                             className="addons-input"
                             onChange={formik.handleChange}
+                            checked={formik.values.addon.includes(
+                                'larger-storage'
+                            )}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
@@ -77,19 +90,30 @@ export const AddOns = () => {
                         </p>
 
                         <p className="text-accent-500">
-                            +${largerStorage.price}/mo
+                            {billing === 'mo'
+                                ? `$${largerStorage.price.monthly}/mo`
+                                : `$${largerStorage.price.yearly}/yr`}
                         </p>
                     </label>
                 </li>
 
-                <li className="addon-list-item">
+                <li
+                    className={
+                        formik.values.addon.includes('custom-profile')
+                            ? 'addon-list-item active-addon'
+                            : 'addon-list-item'
+                    }
+                >
                     <label className="flex">
                         <input
                             type="checkbox"
-                            name="custom-profile"
-                            id="custom-profile"
+                            name="addon"
+                            value="custom-profile"
                             className="addons-input"
                             onChange={formik.handleChange}
+                            checked={formik.values.addon.includes(
+                                'custom-profile'
+                            )}
                         />
                         <p>
                             <span className="text-primary-400 fw-semi-bold">
@@ -101,13 +125,16 @@ export const AddOns = () => {
                         </p>
 
                         <p className="text-accent-500">
-                            +${customProfile.price}/mo
+                            {billing === 'mo'
+                                ? `$${customProfile.price.monthly}/mo`
+                                : `$${customProfile.price.yearly}/yr`}
                         </p>
                     </label>
                 </li>
 
                 <li className="button-wrapper bg-neutral-900 fs-button flex">
                     <button
+                        type="button"
                         className="btn back-btn text-primary-900"
                         onClick={handlePrev}
                     >
@@ -117,7 +144,6 @@ export const AddOns = () => {
                     <button
                         type="submit"
                         className="btn next-btn bg-primary-400 text-neutral-900"
-                        onClick={handleNext}
                     >
                         Next Step
                     </button>
