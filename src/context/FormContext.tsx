@@ -2,56 +2,60 @@ import {
     AddOnArr,
     BillingPlan,
     FormContextObj,
-    FormState,
     Plan,
     ProviderProps,
     personalInfoObj,
 } from '@/types';
-import { createContext, useReducer, useState } from 'react';
-import { formReducer } from '@reducers/FormReducer';
+import { createContext, useState } from 'react';
 
 export const FormContext = createContext({} as FormContextObj);
 
 export const FormProvider = ({ children }: ProviderProps) => {
-    const [state, dispatch] = useReducer(formReducer, { step: 3 } as FormState);
-    const [personalInfo, setPersonalInfo] = useState({} as personalInfoObj);
+    const [currentStep, setCurrentStep] = useState(2);
+    const [personalInfo, setPersonalInfo] = useState<personalInfoObj>({
+        name: '',
+        email: '',
+        phoneNumber: '',
+    });
     const [billing, setBilling] = useState<BillingPlan>('mo');
-    const [plan, setPlan] = useState<Plan>('arcade');
+    const [plan, setPlan] = useState<Plan>();
     const [addOns, setAddOns] = useState<AddOnArr>([]);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleNext = (values: any) => {
-        if (state.step === 1) {
+        if (currentStep === 1) {
             setPersonalInfo(values);
-        } else if (state.step === 2) {
+            setCurrentStep(2);
+        } else if (currentStep === 2) {
             setPlan(values);
-        } else if (state.step === 3) {
-            setAddOns((prev) => [...prev, values]);
+            setCurrentStep(3);
+        } else if (currentStep === 3) {
+            setAddOns((prev) => [...prev, ...values]);
+            setCurrentStep(4);
+        } else if (currentStep === 4) {
+            console.log('Confirm');
         }
-
-        dispatch({ type: 'HANDLE_NEXT' });
-        console.log(addOns);
     };
 
     const handlePrev = () => {
-        dispatch({ type: 'HANDLE_PREV' });
-    };
-
-    const handleInputChange = (field: string, value: string) => {
-        dispatch({ type: 'HANDLE_CHANGE', field, value });
+        if (currentStep > 1) {
+            setCurrentStep((prev) => prev - 1);
+        }
     };
 
     return (
         <FormContext.Provider
             value={{
-                state,
-                handleNext,
-                handlePrev,
-                handleInputChange,
+                currentStep,
                 personalInfo,
                 billing,
                 plan,
                 addOns,
+                isSuccess,
+                setIsSuccess,
                 setBilling,
+                handleNext,
+                handlePrev,
             }}
         >
             {children}

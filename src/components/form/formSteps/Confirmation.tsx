@@ -2,18 +2,17 @@ import { useContext } from 'react';
 import { FormContext } from '@/context/FormContext';
 import { StepHeader } from '@/components/ui/StepHeader';
 import { summaryData } from '@/formInfo.json';
+import { FormSummary } from '@/components/ui/FormSummary';
 
 export const Confirmation = () => {
     const { title, desc } = summaryData;
 
-    const { handleNext, handlePrev } = useContext(FormContext);
+    const { handlePrev, setIsSuccess } = useContext(FormContext);
     return (
-        <div className="step-wrapper bg-neutral-900">
+        <section className="step-wrapper bg-neutral-900">
             <StepHeader title={title} desc={desc} />
 
-            <h1 className="fs-primary-heading text-primary-400 fw-bold">
-                Display Data here
-            </h1>
+            <FormSummary />
 
             <ul>
                 <li className="button-wrapper bg-neutral-900 fs-button flex">
@@ -25,14 +24,13 @@ export const Confirmation = () => {
                     </button>
 
                     <button
-                        type="submit"
                         className="btn next-btn bg-primary-400 text-neutral-900"
-                        onClick={handleNext}
+                        onClick={() => setIsSuccess(true)}
                     >
-                        Next Step
+                        Confirm
                     </button>
                 </li>
             </ul>
-        </div>
+        </section>
     );
 };

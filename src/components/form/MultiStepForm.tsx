@@ -7,21 +7,23 @@ import { Confirmation } from '@formSteps/Confirmation';
 import { Success } from '@formSteps/Success';
 
 export const MultiStepForm = () => {
-    const { state } = useContext(FormContext);
+    const { currentStep, isSuccess } = useContext(FormContext);
 
+    if (isSuccess) {
+        return <Success />;
+    }
+    
     return (
         <div className="form-wrapper">
-            {state?.step === 1 ? (
+            {currentStep === 1 ? (
                 <PersonalInfo />
-            ) : state?.step === 2 ? (
+            ) : currentStep === 2 ? (
                 <Plans />
-            ) : state?.step === 3 ? (
+            ) : currentStep === 3 ? (
                 <AddOns />
-            ) : state?.step === 4 ? (
+            ) : currentStep === 4 ? (
                 <Confirmation />
-            ) : (
-                <Success />
-            )}
+            ) : null}
         </div>
     );
 };

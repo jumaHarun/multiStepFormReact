@@ -9,11 +9,11 @@ export const Plans = () => {
     const { title, desc, monthsOff, plans } = plansData;
     const [arcade, advanced, pro] = plans;
 
-    const { handleNext, handlePrev, billing,plan } = useContext(FormContext);
+    const { handleNext, handlePrev, billing, plan } = useContext(FormContext);
 
     const formik = useFormik({
         initialValues: {
-            plan: plan,
+            plan: plan as string,
         },
         onSubmit: (values) => {
             handleNext(values.plan);

@@ -9,15 +9,16 @@ export interface FormState {
 }
 
 export interface FormContextObj {
-    state: FormState | undefined;
-    handleNext: (values: {}) => void;
-    handlePrev: () => void;
-    handleInputChange: (field: string, value: string) => void;
-    personalInfo: {};
-    plan: {};
+    currentStep: number;
+    personalInfo: personalInfoObj;
+    plan: string | undefined;
     billing: string;
     addOns: string[];
+    isSuccess: boolean;
+    setIsSuccess: (arg0: boolean) => void;
     setBilling: (prev: BillingPlan) => void;
+    handleNext: (values: {}) => void;
+    handlePrev: () => void;
 }
 
 export type ACTIONTYPE =
