@@ -1,5 +1,6 @@
 export interface FormState {
     step: number;
+    // setStep: (arg0: number)=> void;
     name: string;
     email: string;
     phoneNumber: string;

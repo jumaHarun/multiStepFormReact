@@ -2,6 +2,7 @@ import {
     AddOnArr,
     BillingPlan,
     FormContextObj,
+    // FormState,
     Plan,
     ProviderProps,
     personalInfoObj,
@@ -11,6 +12,8 @@ import { createContext, useState } from 'react';
 export const FormContext = createContext({} as FormContextObj);
 
 export const FormProvider = ({ children }: ProviderProps) => {
+    // Initiate form state
+    // ---> Some defaults have been put to improve UX
     const [currentStep, setCurrentStep] = useState(1);
     const [personalInfo, setPersonalInfo] = useState<personalInfoObj>({
         name: '',
