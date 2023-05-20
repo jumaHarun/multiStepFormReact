@@ -18,7 +18,7 @@ export const FormProvider = ({ children }: ProviderProps) => {
         phoneNumber: '',
     });
     const [billing, setBilling] = useState<BillingPlan>('mo');
-    const [plan, setPlan] = useState<Plan>();
+    const [plan, setPlan] = useState<Plan>('arcade');
     const [addOns, setAddOns] = useState<AddOnArr>([]);
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -54,6 +54,7 @@ export const FormProvider = ({ children }: ProviderProps) => {
                 isSuccess,
                 setIsSuccess,
                 setBilling,
+                setCurrentStep,
                 handleNext,
                 handlePrev,
             }}

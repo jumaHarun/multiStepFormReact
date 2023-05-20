@@ -505,7 +505,7 @@ input.plans-input {
     }
 
     .plan-grid {
-        grid-template: 10em / repeat(3, 1fr);
+        grid-template: 11em / repeat(3, 1fr);
         gap: 1em;
     }
 
@@ -518,5 +518,16 @@ input.plans-input {
 
     .toggle-wrapper {
         margin-top: 2.4em;
+    }
+
+    .summary {
+        margin-top: 2em;
+    }
+
+    .success {
+        height: 100%;
+        display: grid;
+        place-content: center;
+        gap: 1em;
     }
 }

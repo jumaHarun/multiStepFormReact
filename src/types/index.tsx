@@ -11,12 +11,13 @@ export interface FormState {
 export interface FormContextObj {
     currentStep: number;
     personalInfo: personalInfoObj;
-    plan: string | undefined;
+    plan: string;
     billing: string;
     addOns: string[];
     isSuccess: boolean;
     setIsSuccess: (arg0: boolean) => void;
     setBilling: (prev: BillingPlan) => void;
+    setCurrentStep: (arg0: number) => void;
     handleNext: (values: {}) => void;
     handlePrev: () => void;
 }

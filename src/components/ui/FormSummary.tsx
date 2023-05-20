@@ -3,11 +3,11 @@ import { FormContext } from '@/context/FormContext';
 import { plansData, addOnsData } from '@/formInfo.json';
 
 export const FormSummary = () => {
-    const { plan, billing, addOns } = useContext(FormContext);
+    const { plan, billing, addOns, setCurrentStep } = useContext(FormContext);
 
-    const planText =
-        plan === 'arcade' ? 'Arcade' : plan === 'advanced' ? 'Advanced' : 'Pro';
-    const currPlan = plansData.plans.find((plan) => plan.name === planText);
+    const currPlan = plansData.plans.find(
+        (el) => el.name.toLowerCase() === plan
+    );
     const billingText = billing === 'mo' ? 'Monthly' : 'Yearly';
     const planAmnt =
         billing === 'mo'
@@ -41,9 +41,12 @@ export const FormSummary = () => {
                 <div className="plan-details text-primary-400 fw-semi-bold flex">
                     <div>
                         <p>
-                            {planText}({billingText})
+                            {currPlan?.name}({billingText})
                         </p>
-                        <button className="change-plan-btn text-primary-900 fw-regular">
+                        <button
+                            className="change-plan-btn text-primary-900 fw-regular"
+                            onClick={() => setCurrentStep(2)}
+                        >
                             Change
                         </button>
                     </div>
