@@ -11,7 +11,7 @@ import { createContext, useState } from 'react';
 export const FormContext = createContext({} as FormContextObj);
 
 export const FormProvider = ({ children }: ProviderProps) => {
-    const [currentStep, setCurrentStep] = useState(2);
+    const [currentStep, setCurrentStep] = useState(1);
     const [personalInfo, setPersonalInfo] = useState<personalInfoObj>({
         name: '',
         email: '',
